@@ -1,0 +1,10 @@
+name: blitz_the_gap_canadian_species_list
+title: Blitz the Gap: Canadian species list
+username: blitzthegap
+account: blitzthegap
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14964148
+bundleId: 10487269
+url: https://blitzthegap.shinyapps.io/blitz_the_gap_canadian_species_list/
+version: 1
