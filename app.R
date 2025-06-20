@@ -11,8 +11,9 @@ library("dplyr")
 #library("thematic") # to apply our bslib theme to shinyApp
 
 # loading in our master list
-completeList <- read.csv("Canada_species_list_adapted_for_collapsibleTree.csv", sep=";")
-completeList[completeList==0] <- NA
+completeList <- read.csv("species_list_for_collapsibleTree_observation_coloring.csv", sep=";")
+completeList$observations_for_collapsibleTree_attribute[is.na(completeList$observations_for_collapsibleTree_attribute)] <- 0
+
 
 # Making ui to combine tree and pie charts etc for each selected node
 ui <- fluidPage(
@@ -38,7 +39,7 @@ server <- function(input, output, session){
       completeList,
       hierarchy= c("first_level", "second_level", "third_level", "fourth_level", "fifth_level"),
       root = "Species of Canada",
-      attribute = "leafCount",
+      attribute = "observations_for_collapsibleTree_attribute",
       fillFun = colorspace::heat_hcl,
       maxPercent = 25,
       percentOfParent = FALSE,
@@ -69,7 +70,7 @@ server <- function(input, output, session){
         breaks = c(-1, 0, 9, 99, 100000000),
         labels = c("0", "1–9", "10-99", ">100")
       )
-      df$obs_category[is.na(df$obs_category)] <- "0"
+      df$obs_category[is.na(df$obs_category)] <- "0" # making all NA obs be 0 obs
       
       pieData <- df %>%
         count(obs_category) %>%
