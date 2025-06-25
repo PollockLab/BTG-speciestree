@@ -3,11 +3,12 @@
 # June 2025
 # Ryan Hull, Quantitative Biodiversity Lab, McGill
 
-# loading in and processing
+## loading in and processing
 species <- read.csv("species_list_for_collapsibleTree_observation_coloring.csv", sep=";")
 species$observations[is.na(species$observations)] <- 0
 species$observations_for_collapsibleTree_attribute <- 0 # new column to fill
 
+## Going through each row
 for (i in 1:nrow(species)){
   
   print(i)

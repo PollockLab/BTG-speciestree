@@ -6,12 +6,12 @@
 # June 2025
 # Ryan Hull
 
-# Loading
-rm(list=ls())
+## Loading data
 species <- read.csv("all_species_adapted_for_tree_with_observations.csv",sep=";")
 species[is.na(species)] <- 0 # to make all NA/0 values uniform, displayed as 0.
 species[species == ""] <- 0 # ditto
 
+## Going through each species
 for (i in 1:nrow(species)){
   # keep track of how far we've gotten
   print(i)
